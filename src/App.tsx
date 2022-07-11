@@ -1,5 +1,3 @@
-import { Link} from 'react-router-dom';
-import './App.css';
 import logo from '../src/assets/Tracare-logo.png';
 
 function App() {
@@ -7,9 +5,13 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-            <Link to={'/Main'}>Tracare website.</Link>
-        </p>
+        {/* <p>
+            <Link to={'/home'}>Home</Link>
+            <Link to={'/dashboard'}>Dashboard</Link>
+            <Link to={'/workouts'}>Workouts</Link>
+            <Link to={'/settings'}>Settings</Link>
+            <Link to={'/account'}>Account</Link>
+        </p> */}
       </header>
     </div>
   );

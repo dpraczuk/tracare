@@ -4,6 +4,13 @@ export const main_colors= {
     red: '#FA4646'
 }
 
+export const developTheme= {
+    primary_bg: '#FFF',
+    secondary_bg: '#F5F5F5',
+    primary_text: '#3D3C4C',
+    secondary_text: '#C6C6C6',
+}
+
 export const lightTheme = {
     primary_bg: '#FFF',
     secondary_bg: '#F5F5F5',
