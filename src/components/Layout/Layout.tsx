@@ -1,16 +1,18 @@
 import Button from "components/Button/Button";
 import Logo from "components/Logo/Logo";
 import React from "react";
-import { NavLink } from "react-router-dom";
-import logo from '../../assets/Tracare-logo.png'
-import { NavigationWrapper } from "./Layout.styled";
+import { NavLink, Link } from "react-router-dom";
+import { NavigationWrapper, Content, Footer } from "./Layout.styled";
+import logo from '../../assets/NavLogo.png'
 
 const Layout: React.FC<{children: React.ReactNode}> = ({children}) => {
   return (
     <>
       <NavigationWrapper>
           <div className="logo">
-            <Logo src={logo} alt="Tracare logo" />
+            <Link to='/home'>
+              <Logo src={logo} alt="Tracare logo" />
+            </Link>
           </div>
           <nav>
             <ul>
@@ -22,10 +24,10 @@ const Layout: React.FC<{children: React.ReactNode}> = ({children}) => {
           </nav>
           <Button>Logout</Button>
       </NavigationWrapper>
-      <div>{children}</div>
-      <footer>
+      <Content>{children}</Content>
+      <Footer>
           <p>©Tracare  2022. All rights reserved</p>
-      </footer>
+      </Footer>
     </>
   );
 }

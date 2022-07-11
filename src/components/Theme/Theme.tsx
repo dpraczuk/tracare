@@ -1,5 +1,6 @@
 export const main_colors= {
     green: '#00D563',
+    greenActive: '#04B154',
     yellow: '#FBCB20',
     red: '#FA4646'
 }
