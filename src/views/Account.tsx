@@ -1,5 +1,6 @@
 
-const Account = () => {
+const Account: React.FC = () => {
+  
   return (
     <div>Account</div>
   )

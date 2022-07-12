@@ -69,6 +69,8 @@ export const NavigationWrapper = styled.header`
 
 export const Content = styled.div`
     min-height: 80vh;
+    width: 52%;
+    margin: 0 auto;
 `
 
 export const Footer = styled.footer`

@@ -1,11 +1,12 @@
-import Button from "components/Button/Button";
-import Logo from "components/Logo/Logo";
+import Button from "components/atoms/Button/Button";
+import Logo from "components/atoms/Logo/Logo";
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink,  Link } from "react-router-dom";
 import { NavigationWrapper, Content, Footer } from "./Layout.styled";
 import logo from '../../assets/NavLogo.png'
+import { main_colors } from "components/Theme/Theme";
 
-const Layout: React.FC<{children: React.ReactNode}> = ({children}) => {
+const Layout: React.FC<{children: React.ReactNode }> = ({children}) => {
   return (
     <>
       <NavigationWrapper>
@@ -16,10 +17,34 @@ const Layout: React.FC<{children: React.ReactNode}> = ({children}) => {
           </div>
           <nav>
             <ul>
-              <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
-              <li><NavLink to='/workouts'>My workouts</NavLink></li>
-              <li><NavLink to='/settings'>Settings</NavLink></li>
-              <li><NavLink to='/account'>Account</NavLink></li>
+              <li>
+                <NavLink style={({isActive}) => ({
+                color: isActive ? main_colors.green : undefined})} 
+                to='/dashboard'>
+                Dashboard
+                </NavLink>
+              </li>
+              <li>
+                <NavLink style={({isActive}) => ({
+                color: isActive ? main_colors.green : undefined})} 
+                to='/workouts'>
+                My workouts
+                </NavLink>
+              </li>
+              <li>
+                <NavLink style={({isActive}) => ({
+                color: isActive ? main_colors.green : undefined})} 
+                to='/settings'>
+                Settings
+                </NavLink>
+              </li>
+              <li>
+                <NavLink style={({isActive}) => ({
+                color: isActive ? main_colors.green : undefined})} 
+                to='/account'>
+                Account
+                </NavLink>
+              </li>
             </ul>
           </nav>
           <Button>Logout</Button>
