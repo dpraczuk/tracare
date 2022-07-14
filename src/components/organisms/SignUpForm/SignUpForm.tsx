@@ -1,20 +1,26 @@
+import { FormWrapper, InputWrapper, ButtonWrapper, CheckboxWrapper } from './SignUpForm.styled'
+import { Formik, Field, Form, FormikHelpers } from 'formik';
 import Button from 'components/atoms/Button/Button';
-import { Formik, Field, Form, FormikHelpers } from 'formik'
-import { FormWrapper, InputWrapper, CheckboxWrapper, LabelsWrapper, ButtonWrapper } from './LoginForm.styled'
+
+
 
 interface Values {
-    email: string;
-    password: string;
-    rememberMe: boolean;
+  userName: string;
+  email: string;
+  password: string;
+  confirm: string;
+  rememberMe: boolean;
 }
 
-const LoginForm: React.FC = () => {
+const SignUpForm = () => {
   return (
     <FormWrapper>
-        <Formik
+      <Formik
             initialValues={{
+                userName: '',
                 email: '',
                 password: '',
+                confirm: '',
                 rememberMe: false,
             }}
             onSubmit={(
@@ -29,15 +35,20 @@ const LoginForm: React.FC = () => {
         >
             <Form>
               <InputWrapper>
+                <label htmlFor="userName">Name</label>
+                <Field id="userName" name="userName" />
+              </InputWrapper>
+              <InputWrapper>
                 <label htmlFor="email">Email</label>
                 <Field id="email" name="email" />
               </InputWrapper>
               <InputWrapper>
-                <LabelsWrapper>
                     <label htmlFor="password">Password</label>
-                    <label className='motive' htmlFor='password'>Forgot your password?</label>
-                </LabelsWrapper>
                 <Field id="password" name="password" type="password"/>
+              </InputWrapper>
+              <InputWrapper>
+                    <label htmlFor="confirm">Confirm password</label>
+                <Field id="confirm" name="confirm" type="password"/>
               </InputWrapper>
               <CheckboxWrapper>
                 <Field id="rememberMe" name="rememberMe" type="checkbox" />
@@ -53,4 +64,4 @@ const LoginForm: React.FC = () => {
   )
 }
 
-export default LoginForm
+export default SignUpForm

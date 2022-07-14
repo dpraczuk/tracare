@@ -9,7 +9,7 @@ import Settings from 'views/Settings';
 import WorkoutsList from 'views/WorkoutsList'
 import Account from 'views/Account'
 import Dashboard from 'views/Dashboard';
-import Register from 'views/Register';
+import Register from 'views/Register/Register';
 import Login from 'views/Login/Login';
 
 const root = ReactDOM.createRoot(

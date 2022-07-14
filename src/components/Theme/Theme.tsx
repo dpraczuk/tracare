@@ -4,7 +4,7 @@ export const main_colors= {
     yellow: '#FBCB20',
     red: '#FA4646',
     grey: '#4B4B4B',
-    
+    lightGrey: '#DCDCDC'
 }
 
 export const developTheme= {

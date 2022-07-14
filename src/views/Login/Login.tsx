@@ -1,6 +1,9 @@
-import { StyledWrapper, ImageContainer, FormContainer, ImageWrapper, FormWrapper, Title, SignUpContainer } from "./Login.styled"
+import { StyledWrapper, ImageContainer, FormContainer, ImageWrapper, FormWrapper,  SignUpContainer } from "./Login.styled"
 import loginImg from '../../assets/Tracare_login_pic.png'
+import FormTitle from "components/atoms/FormTitle/FormTitle"
 import LoginForm from "components/organisms/LoginForm/LoginForm"
+import { Link } from "react-router-dom"
+
 const Login = () => {
   return (
     <StyledWrapper>
@@ -11,12 +14,12 @@ const Login = () => {
       </ImageWrapper>
       <FormWrapper>
         <FormContainer>
-          <Title>
+          <FormTitle>
             Sign in to <strong>Tracare</strong>
-          </Title>
+          </FormTitle>
           <LoginForm />
           <SignUpContainer>
-            Don't have an account? <strong>Sign up</strong>
+            Don't have an account? <strong><Link to='/register'>Sign up</Link></strong>
           </SignUpContainer>
         </FormContainer>
       </FormWrapper>

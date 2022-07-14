@@ -1,37 +1,25 @@
-import { main_colors } from "components/Theme/Theme";
 import styled from "styled-components";
+import { main_colors } from "components/Theme/Theme";
 
 export const FormWrapper = styled.div`
     display: flex;
-    flex-direction: column;
-    width: 68%;
+    width: 66%;
     font-family: 'Montserrat';
     font-weight: 600;
     font-size: 14px;
+    justify-content: center;
 
-    .motive {
-        color: ${main_colors.green}
+    form {
+        width: 100%;
     }
+
     button {
         height: 54px;
-        border-radius: 10px;
+        border-radius: 5px;
         font-size: 18px;
         font-weight: 600;
+        /* width: 80%; */
         margin: 0 auto;
-    }
-`
-
-export const EmailWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    label {
-        margin: 5px 0;
-    }
-    input {
-        border: none;
-        background-color: #F7FAFC;
-        height: 34px;
     }
 `
 
@@ -39,6 +27,8 @@ export const InputWrapper = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
+    /* width: 100%; */
+
     label {
         margin: 7px 0 7px 2px;
     }
@@ -63,10 +53,6 @@ export const CheckboxWrapper = styled.div`
     input {
         margin-right: 7px
     }
-`
-export const LabelsWrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
 `
 
 export const ButtonWrapper = styled.div`
