@@ -4,16 +4,29 @@ import { useEffect, useState } from 'react'
 import arrowUp from '../assets/arrow-up.svg'
 import arrowDown from '../assets/arrow-down.svg'
 import ScrollButton from "components/molecules/ScrollDown/ScrollBtn"
-
-interface dateFormat {
-  day: number,
-  month: number,
-  year: number,
-}
+import WorkoutItem from "components/organisms/WorkoutItem/WorkoutItem"
 
 const WorkoutsList: React.FC = () => {
-  const [currWeekList, setCurrWeekList] = useState<dateFormat[]>([])
-  const [midDay, setMidDay] = useState<Dayjs>()
+  const [currWeekList, setCurrWeekList] = useState<Dayjs[]>([])
+  const [midDay, setMidDay] = useState<Dayjs>();
+
+  const initializeFirebaseDB = (startDate: string, endDate: string, steps = 1) => {
+    const dateArray = [];
+    const currentDate = new Date(startDate);
+
+    while (currentDate <= new Date(endDate)) {
+      dateArray.push(new Date(currentDate));
+      // Use UTC date to prevent problems with time zones and DST
+      currentDate.setUTCDate(currentDate.getUTCDate() + steps);
+    }
+
+    return dateArray;
+
+  };
+
+  
+  const dates = initializeFirebaseDB('2022-01-01', '2029-12-31')
+  console.log(dayjs(dates[0]).format('DD-MM-YYYY'))
   dayjs.extend(isoWeek)
 
   const generateStartingList = () => {
@@ -24,15 +37,8 @@ const WorkoutsList: React.FC = () => {
         startingList.push(currentDay.add(i, 'day'))
         startingList.unshift(currentDay.subtract(i, 'day'))
     }
-    setCurrWeekList(
-      startingList.map(item => {
-        return {
-          day: item.date(),
-          month: item.month()+1,
-          year: item.year(),
-        }
-      })
-    )
+    startingList.map(item => console.log(item.format('MMM D')));
+    setCurrWeekList(startingList)
     setMidDay(startingList[2])
   };
   
@@ -48,17 +54,8 @@ const WorkoutsList: React.FC = () => {
       listArr.unshift(currDay.subtract(i, 'day'))
     }
 
-    setCurrWeekList(
-      listArr.map(item => {
-        return {
-          day: item.date(),
-          month: item.month()+1,
-          year: item.year(),
-        }
-      })
-    )
+    setCurrWeekList(listArr)
     setMidDay(listArr[2]);
-    console.log(midDay?.format('DD.MM.YYYY'))
   }
 
   const slideDownHandler = () => {
@@ -69,22 +66,14 @@ const WorkoutsList: React.FC = () => {
       listArr.push(currDay.add(i, 'day'))
     }
 
-    setCurrWeekList(
-      listArr.map(item => {
-        return {
-          day: item.date(),
-          month: item.month()+1,
-          year: item.year(),
-        }
-      })
-    )
+    setCurrWeekList(listArr)
     setMidDay(listArr[2]);
   }
 
   return (
     <div>
       <ScrollButton onClickHandler={slideUpHandler} src={arrowUp} alt='Scroll up' />
-      {currWeekList && currWeekList.map(item => <div key={item.day} id={`${item.day}-${item.month}-${item.year}`}>{item.day}.{item.month}.{item.year}</div>)}
+      {currWeekList && currWeekList.map(date => <WorkoutItem key={date.format('DD-MM-YYYY')} id={date.format('DD-MM-YYYY')} date={date} />)}
       <ScrollButton onClickHandler={slideDownHandler} src={arrowDown} alt='Scroll down' />
     </div>
   )

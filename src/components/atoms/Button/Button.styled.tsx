@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { developTheme, main_colors} from '../../Theme/Theme'
 
+
 export const StyledButton = styled.button`
     background-color: ${main_colors.green};
     border: none;

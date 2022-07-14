@@ -1,9 +1,9 @@
 import React from 'react'
 import { StyledButton } from './Button.styled'
 
-const Button: React.FC<{children: React.ReactNode, onClickHandler?: () => void}> = ({children, onClickHandler}) => {
+const Button: React.FC<{children?: React.ReactNode, onClickHandler?: () => void, type?: "submit" | "button" | "reset"}> = ({children, onClickHandler, type}) => {
   return (
-    <StyledButton onClick={onClickHandler}>{children}</StyledButton>
+    <StyledButton onClick={onClickHandler} type={type} >{children}</StyledButton>
   )
 }
 

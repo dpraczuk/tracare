@@ -2,7 +2,9 @@ export const main_colors= {
     green: '#00D563',
     greenActive: '#04B154',
     yellow: '#FBCB20',
-    red: '#FA4646'
+    red: '#FA4646',
+    grey: '#4B4B4B',
+    
 }
 
 export const developTheme= {
@@ -10,6 +12,7 @@ export const developTheme= {
     secondary_bg: '#F5F5F5',
     primary_text: '#3D3C4C',
     secondary_text: '#C6C6C6',
+    effect: '#F7FAFC'
 }
 
 export const lightTheme = {
@@ -17,6 +20,7 @@ export const lightTheme = {
     secondary_bg: '#F5F5F5',
     primary_text: '#3D3C4C',
     secondary_text: '#C6C6C6',
+    effect: '#F7FAFC'
 }
 
 export const darkTheme = {
