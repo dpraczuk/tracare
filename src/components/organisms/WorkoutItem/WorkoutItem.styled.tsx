@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const StyledWrapper = styled.div`
     font-family: Barlow;
     display: flex;
-    border: 3px solid #DCDCDC;
+    border: 2px solid #DCDCDC;
     border-radius: 5px;
     margin: 20px 0;
     color: ${lightTheme.primary_text};

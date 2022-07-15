@@ -45,7 +45,7 @@ const LoginForm: React.FC = () => {
               </CheckboxWrapper>
 
               <ButtonWrapper>
-                <Button type="submit">Continue</Button>
+                <Button type="submit">Log in</Button>
               </ButtonWrapper>
             </Form>
         </Formik>
