@@ -74,4 +74,10 @@ export const ButtonWrapper = styled.div`
     height: 60px;
     border-radius: 5px;
     width: 100%;
+    button {
+        transition: .1s;
+        &:hover {
+            background-color: ${main_colors.greenActive}
+        }
+    }
 `
