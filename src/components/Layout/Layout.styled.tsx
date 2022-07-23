@@ -69,7 +69,7 @@ export const NavigationWrapper = styled.header`
 
 export const Content = styled.div`
     min-height: 80vh;
-    width: 52%;
+    width: 58%;
     margin: 0 auto;
 `
 
@@ -77,6 +77,6 @@ export const Footer = styled.footer`
     text-align: right;
     margin-right: 30px;
     p {
-        margin: 30px 0;
+        margin-bottom: 10px;
     }
 `

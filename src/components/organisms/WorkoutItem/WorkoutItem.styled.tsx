@@ -4,11 +4,12 @@ import styled from "styled-components";
 export const StyledWrapper = styled.div`
     font-family: Barlow;
     display: flex;
-    border: 2px solid #DCDCDC;
+    border: 1px solid #DCDCDC;
     border-radius: 5px;
-    margin: 20px 0;
+    margin: 14px 0;
     color: ${lightTheme.primary_text};
     transition: .2s;
+    
     &:hover {
         background-color: ${lightTheme.effect};
     }
@@ -18,7 +19,7 @@ export const DateWrapper = styled.div`
     font-family: Barlow;
     font-weight: medium;
     max-width: 6%;
-    margin: 30px 30px;
+    margin: 28px 30px;
     text-align: center;
     flex-grow: 1;
     .day {

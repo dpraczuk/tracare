@@ -45,10 +45,8 @@ export const InputWrapper = styled.div`
     input {
         border: 1px solid ${main_colors.lightGrey};
         border-radius: 5px;
-        /* border: none;
-        background-color: #F7FAFC; */
         height: 40px;
-        padding: 0 5px;
+        padding: 0 10px;
         font-size: 18px;
         color: ${main_colors.grey};
         &:focus {

@@ -1,6 +1,12 @@
 import Button from 'components/atoms/Button/Button';
 import { Formik, Field, Form, FormikHelpers } from 'formik'
 import { FormWrapper, InputWrapper, CheckboxWrapper, LabelsWrapper, ButtonWrapper } from './LoginForm.styled'
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../../../firebase/config'
+import { useContext } from 'react'
+import AuthContext from 'store/auth-context';
+import {useNavigate} from 'react-router-dom';
+
 
 interface Values {
     email: string;
@@ -9,6 +15,11 @@ interface Values {
 }
 
 const LoginForm: React.FC = () => {
+
+  const navigate = useNavigate()
+
+  const authCtx = useContext(AuthContext)
+
   return (
     <FormWrapper>
         <Formik
@@ -21,10 +32,21 @@ const LoginForm: React.FC = () => {
                 values: Values,
                 { setSubmitting }: FormikHelpers<Values>
               ) => {
-                setTimeout(() => {
-                  alert(JSON.stringify(values, null, 2));
-                  setSubmitting(false);
-                }, 500);
+                const {email, password} = values;
+                signInWithEmailAndPassword(auth, email, password)
+                  .then((userCredential) => {
+                    const user = userCredential.user;
+                    // authCtx.login(user.getIdToken)
+                    user.getIdToken().then(token => authCtx.login(token));
+                    navigate('/dashboard', {replace: true});
+                    console.log(user.uid)
+                  })
+                  .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(errorCode, errorMessage)
+                  });
+                  setSubmitting(false)
               }}
         >
             <Form>
@@ -47,6 +69,7 @@ const LoginForm: React.FC = () => {
               <ButtonWrapper>
                 <Button type="submit">Log in</Button>
               </ButtonWrapper>
+            {authCtx.isLoggedIn ? <h1>Logged</h1> : ''}
             </Form>
         </Formik>
     </FormWrapper>

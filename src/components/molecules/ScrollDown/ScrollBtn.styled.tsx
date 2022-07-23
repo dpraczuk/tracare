@@ -6,7 +6,7 @@ export const StyledWrapper = styled.div`
 `
 
 export const ImageWrapper = styled.div`
-    margin: 20px;
+    margin: 16px;
     img {
         filter: invert(81%) sepia(46%) saturate(5136%) hue-rotate(95deg) brightness(91%) contrast(101%);
         &:hover {

@@ -1,11 +1,11 @@
 import { FormWrapper, InputWrapper, ButtonWrapper, CheckboxWrapper } from './SignUpForm.styled'
 import { Formik, Field, Form, FormikHelpers } from 'formik';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import {auth} from '../../../firebase/config';
 import Button from 'components/atoms/Button/Button';
 
-
-
 interface Values {
-  userName: string;
+  // userName: string;
   email: string;
   password: string;
   confirm: string;
@@ -13,11 +13,13 @@ interface Values {
 }
 
 const SignUpForm = () => {
+
+
+  
   return (
     <FormWrapper>
       <Formik
             initialValues={{
-                userName: '',
                 email: '',
                 password: '',
                 confirm: '',
@@ -27,17 +29,27 @@ const SignUpForm = () => {
                 values: Values,
                 { setSubmitting }: FormikHelpers<Values>
               ) => {
-                setTimeout(() => {
-                  alert(JSON.stringify(values, null, 2));
-                  setSubmitting(false);
-                }, 500);
+                const {email, password} = values;
+                createUserWithEmailAndPassword(auth, email, password)
+                  .then((userCredential) => {
+                    // Signed in 
+                    const user = userCredential.user;
+                    console.log(user)
+                  })
+                  .catch((error) => {
+                    const errorCode = error.code;
+                    console.log(errorCode)
+                    const errorMessage = error.message;
+                    console.log(errorMessage)
+                  });
+                setSubmitting(false)
               }}
         >
             <Form>
-              <InputWrapper>
+              {/* <InputWrapper>
                 <label htmlFor="userName">Name</label>
                 <Field id="userName" name="userName" />
-              </InputWrapper>
+              </InputWrapper> */}
               <InputWrapper>
                 <label htmlFor="email">Email</label>
                 <Field id="email" name="email" />

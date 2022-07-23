@@ -1,12 +1,20 @@
-import Button from "components/atoms/Button/Button";
-import Logo from "components/atoms/Logo/Logo";
-import React from "react";
-import { NavLink,  Link } from "react-router-dom";
-import { NavigationWrapper, Content, Footer } from "./Layout.styled";
+import React, { useContext } from "react";
+import { NavLink,  Link, useNavigate } from "react-router-dom";
+import AuthContext from "store/auth-context";
 import logo from '../../assets/NavLogo.png'
 import { main_colors } from "components/Theme/Theme";
+import { NavigationWrapper, Content, Footer } from "./Layout.styled";
+import Button from "components/atoms/Button/Button";
+import Logo from "components/atoms/Logo/Logo";
 
 const Layout: React.FC<{children: React.ReactNode }> = ({children}) => {
+  const authCtx = useContext(AuthContext)
+  const navigate = useNavigate();
+
+  const logoutHandler = () => {
+    authCtx.logout();
+    navigate('/home', {replace: true})
+  }
   return (
     <>
       <NavigationWrapper>
@@ -47,7 +55,7 @@ const Layout: React.FC<{children: React.ReactNode }> = ({children}) => {
               </li>
             </ul>
           </nav>
-          <Button>Logout</Button>
+          <Button onClickHandler={logoutHandler}>Logout</Button>
       </NavigationWrapper>
       <Content>{children}</Content>
       <Footer>

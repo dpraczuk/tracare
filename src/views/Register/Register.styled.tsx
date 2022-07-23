@@ -14,13 +14,13 @@ export const RegisterWrapper = styled.div`
 export const SignUpFormWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 32vw;
+    width: 30vw;
     background-color: #fff;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
     box-shadow: 0px 0px 16px 3px #e7e7e7;
-    padding: 90px 0;
+    padding: 80px 0;
     h1 {
         margin-top: 0;
     }
